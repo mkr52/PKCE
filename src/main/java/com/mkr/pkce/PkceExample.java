@@ -1,6 +1,7 @@
 package com.mkr.pkce;
 
 import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,8 +15,11 @@ public class PkceExample {
      
             String codeVerifier = pkce.generateCodeVerifier();
             System.out.println("Code verifier: " + codeVerifier);
+            
+            String codeChallenge = pkce.generateCodeChallenge(codeVerifier);
+            System.out.println("Code challenge: " + codeChallenge);
  
-        } catch (UnsupportedEncodingException ex) {
+        } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
             Logger.getLogger(PkceExample.class.getName()).log(Level.SEVERE, null, ex);
         }
 
